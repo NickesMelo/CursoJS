@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+body {
+  background-image: linear-gradient(#3b1566, #5f4da8);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 950px;
+  margin: 100px auto;
+  background: #fff;
+  padding: 50px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#container-botoes {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  color: #d6d6ea;
+}
+
+button {
+  font-size: 50px;
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover{
+  color: #3b1566;
+}
+
+h1 {
+  color: #d6d6ea;
+}
+.bi-square-fill{
+  font-size: 40px;
+}
+
+.relogio {
+  font-size: 3em;
+}
+
+.pausado {
+  color: red;
+}
+
+.piscar {
+  animation: blink 1s infinite;
+}

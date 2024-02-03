@@ -32,3 +32,12 @@ setTimeout(function() {
 
 //setTimeout( () => callback(), 1000)
 
+function criaSegundos(segundos) {
+    const data = new Date(segundos * 1000);
+    
+    return hora.toLocaleTimeString('pt-BR', {
+        hour12: false
+    });
+
+}
+console.log(hora);
