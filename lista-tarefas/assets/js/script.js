@@ -22,7 +22,6 @@ function salvarTarefa() {
         tarefaTexto = tarefaTexto.replace('Apagar', '').trim(); //Replace modifica o texto //trin() remove espaços do array
         listaDeTarefas.push(tarefaTexto);
     }
-
 }
 
 function limpaInput() {
@@ -56,7 +55,6 @@ function botaoApagar(e) {
     }
 }
 
-
 function verificaInput(texto) {
     if (!texto) {
         alert("O input está vazio. Por favor, insira um valor.");
@@ -70,8 +68,6 @@ function verificaTecla(e) {
         criaTarefa();
     }
 }
-
-
 
 btnTarefa.addEventListener('click', criaTarefa);
 inputTarefa.addEventListener('keypress', verificaTecla);
