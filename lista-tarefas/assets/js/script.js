@@ -19,19 +19,11 @@ function salvarTarefa() {
 
     for (tarefa of liTarefas) {
         let tarefaTexto = tarefa.innerText;
-        tarefaTexto = tarefaTexto.replace('Apagar' , '').trim(); //Replace modifica o texto 
+        tarefaTexto = tarefaTexto.replace('Apagar', '').trim(); //Replace modifica o texto //trin() remove espaços do array
         listaDeTarefas.push(tarefaTexto);
     }
 
-    const tarefasJSON = JSON.stringify(listaDeTarefas);
-    localStorage.setItem('tarefas', tarefasJSON);
 }
-
-function adcionaTarefasSalvas() {
-    const tarefas = localStorage.getItem('tarefas');
-    const listaDeTarefas = JSON.parse(tarefas);
-    console.log(tarefas);
-}adcionaTarefasSalvas()
 
 function limpaInput() {
     inputTarefa.value = ''; //Limpa o input
