@@ -30,7 +30,7 @@ h1 {
     color: #2c3e50;
 }
 
-.btn-add-new-note {
+#btn-add-new-note {
     width: 500px;
     height: 50px;
     border: none;
@@ -134,7 +134,7 @@ textarea {
 
 /*Estilos btn*/
 
-.btn-add-new-note:hover {
+#btn-add-new-note:hover {
     background-color: #fff;
     color: black;
 }
@@ -159,15 +159,17 @@ textarea {
     color: black;
 }
 
-label[for="low"]:hover{
+label[for="low"]:hover {
     border-bottom: 5px solid #62d6fd;
     color: #686666;
 }
-label[for="middle"]:hover{
+
+label[for="middle"]:hover {
     border-bottom: 5px solid #edf05e;
     color: #686666;
 }
-label[for="high"]:hover{
+
+label[for="high"]:hover {
     border-bottom: 5px solid #f75e5e;
     color: #686666;
 }
@@ -197,23 +199,30 @@ label[for="high"]:hover{
 /* Media Queries */
 
 /* Estilos para telas menores que 600px */
-
 @media (max-width: 600px) {
     #containter-general {
-        max-width: 50vw;
+        width: 90vw;
+        padding: 15px;
         align-items: center;
     }
-    h1{
+    
+    h1 {
         text-align: center;
+        font-size: 28px;
     }
     
-    .btn-add-new-note {
+    #btn-add-new-note {
         width: 90%;
+        font-size: 18px;
     }
-
+    
     #priority-group {
+        
+        text-align: center;
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: left;
     }
 
     ul {
@@ -221,6 +230,122 @@ label[for="high"]:hover{
     }
 
     li {
-        width: 90%;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notes {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+    }
+
+    textarea {
+        width: calc(100% - 30px);
+        font-size: 12px;
+        margin-left: 0;
+    }
+
+    .group-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .btn-save,
+    .btn-edit,
+    .btn-delete,
+    .btn-return {
+        width: 48%;
+        font-size: 12px;
+        height: 25px;
+    }
+}
+
+/* Estilos para telas entre 601px e 1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+    #containter-general {
+        width: 70vw;
+        padding: 20px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    #btn-add-new-note {
+        width: 80%;
+        font-size: 20px;
+    }
+
+    ul {
+        width: 80%;
+    }
+
+    li {
+        width: 100%;
+    }
+
+    .notes {
+        width: 100%;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    .btn-save,
+    .btn-edit,
+    .btn-delete,
+    .btn-return {
+        font-size: 14px;
+        height: 28px;
+    }
+}
+
+/* Estilos para telas maiores que 1024px */
+@media (min-width: 1025px) {
+    #containter-general {
+        width: 60vw;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    #btn-add-new-note {
+        width: 500px;
+    }
+
+    ul {
+        width: 500px;
+    }
+
+    li {
+        width: 100%;
+    }
+
+    .notes {
+        width: 100%;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    .btn-save,
+    .btn-edit,
+    .btn-delete,
+    .btn-return {
+        width: auto;
+        font-size: 14px;
+        height: 30px;
     }
 }

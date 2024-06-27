@@ -12,7 +12,7 @@
 <body>
     <div id="containter-general">
         <h1>Lista de tarefas</h1>
-        <button class="btn-add-new-note">Adicionar</button>
+        <button id="btn-add-new-note">Adicionar</button>
         <div id="priority-group">
             <label>Selecione uma prioridade:</label>
             <label for="low"><input type="radio" name="priority" value="low-priority" id="low"  checked> Baixa </label>
@@ -23,43 +23,7 @@
             <li class="low-priority">
                 <div class="notes">
                     <input type="checkbox" name="checkbox-to-do" id="checkbox-to-do">
-                    <textarea id="multilineInput" name="multilineInput" rows="4" cols="50"></textarea>
-                </div>
-                <div class="group-buttons">
-                    <button class="btn-save">Salvar</button>
-                    <button class="btn-edit">Editar</button>
-                    <button class="btn-delete">Excluir</button>
-                    <button class="btn-return">Voltar</button>
-                </div>
-            </li>
-            <li class="middle-priority">
-                <div class="notes">
-                    <input type="checkbox" name="checkbox-to-do" id="checkbox-to-do">
-                    <textarea id="multilineInput" name="multilineInput" rows="4" cols="50"></textarea>
-                </div>
-                <div class="group-buttons">
-                    <button class="btn-save">Salvar</button>
-                    <button class="btn-edit">Editar</button>
-                    <button class="btn-delete">Excluir</button>
-                    <button class="btn-return">Voltar</button>
-                </div>
-            </li>
-            <li class="high-priority">
-                <div class="notes">
-                    <input type="checkbox" name="checkbox-to-do" id="checkbox-to-do">
-                    <textarea id="multilineInput" name="multilineInput" rows="4" cols="50"></textarea>
-                </div>
-                <div class="group-buttons">
-                    <button class="btn-save">Salvar</button>
-                    <button class="btn-edit">Editar</button>
-                    <button class="btn-delete">Excluir</button>
-                    <button class="btn-return">Voltar</button>
-                </div>
-            </li>
-            <li class="completed">
-                <div class="notes">
-                    <input type="checkbox" name="checkbox-to-do" id="checkbox-to-do">
-                    <textarea id="multilineInput" name="multilineInput" rows="4" cols="50"></textarea>
+                    <textarea id="multilineInput" name="multilineInput" rows="4" cols="50" maxlength="80" placeholder="Escreva sua nota"></textarea>
                 </div>
                 <div class="group-buttons">
                     <button class="btn-save">Salvar</button>
