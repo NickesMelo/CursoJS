@@ -1,5 +1,6 @@
 const btn_add_new_note = document.querySelector("#btn-add-new-note");
 
+
 function preventDefault(event){
     event.preventDefault();
 }
@@ -9,6 +10,9 @@ function createNewNote(event){
     const newLi = createNewLi();
 
     selectPriority(newLi);
+
+    const checkbox = newLi.querySelector('input[type="checkbox"]');
+    checkbox.addEventListener("change", verifyCheckboxComplete);
 
 }
 
@@ -30,15 +34,32 @@ function createNewLi(){
                 return li;
 }
 
-function selectPriority(li){
+function selectPriority(newLi){
     const selectPriority = document.querySelector('input[name="priority"]:checked').value;
 
     if(selectPriority === "low-priority"){
-        li.classList.add("low-priority");
+        newLi.classList.add("low-priority");
     } else if(selectPriority === "middle-priority"){
-        li.classList.add("middle-priority");
+        newLi.classList.add("middle-priority");
     }else if(selectPriority === "high-priority"){
-        li.classList.add("high-priority");
+        newLi.classList.add("high-priority");
+    }
+}
+
+function verifyCheckboxComplete(event, newLi){
+    
+    if(event.target.type === "checkbox"){ //Checks the selected target
+        const checkbox = event.target;   //Selected target
+        const isChecked = checkbox.checked; //Target don't selected
+        
+        if(isChecked){
+            console.log("Checkbox selected");
+            
+        } else{
+            console.log("The checkbox is not selected");
+        }
+    }else{
+        console.log("Evento não disparado");
     }
 }
 
