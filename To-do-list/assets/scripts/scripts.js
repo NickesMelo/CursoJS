@@ -1,59 +1,47 @@
-const container_general = document.querySelector("#container-general");
-const priority_group = document.querySelector("#priority-group");
 const btn_add_new_note = document.querySelector("#btn-add-new-note");
-const ul = document.querySelector("ul");
-const li = document.createElement("li");
-const multilineInput = document.querySelector("#multilineInput");
-const btn_save = document.querySelector(".btn-save");
-const btn_edit = document.querySelector(".btn-edit");
-const btn_delete = document.querySelector(".btn-delete");
-const btn_return = document.querySelector(".btn-return");
 
-multilineInput.disabled = true;
-
-function prevent_default(event) {
+function preventDefault(event){
     event.preventDefault();
 }
 
 function createNewNote(event){
-    event.preventDefault(event);
-    createNewLi();
-    editNote();
+    preventDefault(event);
+    const newLi = createNewLi();
+
+    selectPriority(newLi);
+
 }
 
 function createNewLi(){
-    
-    li.classList.add("low-priority");
-    li.innerHTML = 
-    `
-        <li>
-            <div class="notes">
-                <input type="checkbox" name="checkbox-to-do" id="checkbox-to-do">
-                <textarea id="multilineInput" name="multilineInput" rows="4" cols="50" maxlength="80" placeholder="Escreva sua nota"></textarea>
-            </div>
-            <div class="group-buttons">
-                <button class="btn-save">Salvar</button>
-                <button class="btn-edit">Editar</button>
-                <button class="btn-delete">Excluir</button>
-                <button class="btn-return">Voltar</button>
-            </div>
-        </li>
-    `
-    ul.appendChild(li);
+    const ul = document.querySelector("ul");
+    const li = document.createElement("li");
+    li.innerHTML = `    <li">
+                            <div class="notes">
+                                <input type="checkbox" name="checkbox-to-do" id="checkbox-to-do">
+                                <textarea id="multilineInput" name="multilineInput" rows="4" cols="50" maxlength="80" placeholder="Escreva sua nota"></textarea>
+                            </div>
+                            <div class="group-buttons">
+                                <button class="btn-save">Salvar</button>
+                                <button class="btn-edit">Editar</button>
+                                <button class="btn-delete">Excluir</button>
+                                <button class="btn-return">Voltar</button>
+                            </div>
+                        </li>
+                        `
+                ul.append(li)
+                return li;
 }
 
-function selectPriorityGroup(){
-    console.log(priority-group);
-}
+function selectPriority(li){
+    const selectPriority = document.querySelector('input[name="priority"]:checked').value;
 
-function editNote(){
-    multilineInput.disabled = false;
-    multilineInput.focus();
-    multilineInput.select();
-
-    console.log(btn_edit);
-
+    if(selectPriority === "low-priority"){
+        li.classList.add("low-priority");
+    } else if(selectPriority === "middle-priority"){
+        li.classList.add("middle-priority");
+    }else if(selectPriority === "high-priority"){
+        li.classList.add("high-priority");
+    }
 }
 
 btn_add_new_note.addEventListener("click", createNewNote);
-btn_edit.addEventListener("click", editNote);
