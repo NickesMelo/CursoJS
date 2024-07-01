@@ -43,14 +43,6 @@ function selectPriority(newLi) {
   ).value;
 
   newLi.classList.add(selectPriority)
-
-//   if (selectPriority === "low-priority") {
-//     newLi.classList.add("low-priority");
-//   } else if (selectPriority === "middle-priority") {
-//     newLi.classList.add("middle-priority");
-//   } else if (selectPriority === "high-priority") {
-//     newLi.classList.add("high-priority");
-//   }
 }
 
 function verifyCheckboxComplete(event, newLi, text_area) {
@@ -68,6 +60,7 @@ function verifyCheckboxComplete(event, newLi, text_area) {
             };
             newLi.classList.remove("low-priority", "middle-priority", "high-priority");
             newLi.classList.add("completed");
+            checkbox.disabled = true;
         } else{
             if(task_state[taksID]){
                 newLi.classList.remove("completed");
