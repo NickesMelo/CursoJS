@@ -78,26 +78,6 @@ function verifyCheckboxComplete(event, newLi, text_area) {
     }else{
         console.log("O evento não foi disparado por um checkbox");
     }
-
-
-
-/*  const activate_priority = selectPriority(newLi);
-  if (event.target.type === "checkbox") {//Checks the selected target
-    const checkbox = event.target; //Selected target
-    const isChecked = checkbox.checked; //Check target don't selected
-    if (isChecked) {
-      newLi.classList.remove(
-        "low-priority",
-        "middle-priority",
-        "high-priority"
-      );
-      newLi.classList.add("completed");
-    } else {
-      activate_priority;
-    }
-  } else {
-    console.log("Evento não disparado");
-  }*/
 }
 
 btn_add_new_note.addEventListener("click", createNewNote);
