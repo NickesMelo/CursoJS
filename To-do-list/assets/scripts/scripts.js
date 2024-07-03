@@ -12,10 +12,14 @@ function createNewNote(event) {
 
   const checkbox = newLi.querySelector('input[type="checkbox"]');
   const text_area = newLi.querySelector("textarea");
-
+  text_area.focus();
+  text_area.select();
+ 
   checkbox.addEventListener("change", (event) =>
     verifyCheckboxComplete(event, newLi, text_area)
   );
+
+  editAndSave(checkbox, text_area);
 }
 
 function createNewLi() {
@@ -73,4 +77,24 @@ function verifyCheckboxComplete(event, newLi, text_area) {
     }
 }
 
+function editAndSave(checkbox, text_area, event, newLi){
+  const btn_edit = document.querySelector(".btn-edit");
+  btn_edit.addEventListener("click", () => {
+    text_area.disabled = false;
+    text_area.focus();
+    text_area.select();
+    console.log('btn_edit clicado');
+  });
+
+  const btn_save = document.querySelector(".btn-save");
+  btn_save.addEventListener("click", (event) => {
+    
+      text_area.disabled = true;
+      console.log("btn_save clicado");
+   
+  }) 
+} 
+
 btn_add_new_note.addEventListener("click", createNewNote);
+
+
