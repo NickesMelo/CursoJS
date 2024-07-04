@@ -1,6 +1,9 @@
 const btn_add_new_note = document.querySelector("#btn-add-new-note");
 const task_state = {};
 
+// Carrega as notas ao iniciar
+window.onload = loadNotes;
+
 function preventDefault(event) {
   event.preventDefault();
 }
@@ -25,7 +28,7 @@ function createNewNote(event) {
     btn_save.classList.add("display-none");
     btn_edit.classList.add("display-block");
     btn_delete.classList.add("display-block");
-    console.log("btn_save clicado");
+    saveNoteToStorage(newLi);
   });
 
   btn_edit.addEventListener("click", () => {
@@ -36,17 +39,18 @@ function createNewNote(event) {
     btn_save.classList.add("display-block");
     btn_edit.classList.remove("display-block");
     btn_edit.classList.add("display-none");
-    console.log("btn_edit clicado");
   });
 
   btn_delete.addEventListener("click", () => {
     newLi.remove();
-    console.log("btn_delete clicado");
+    deleteNoteFromStorage(newLi.dataset.id);
   });
 
   checkbox.addEventListener("change", (event) =>
     verifyCheckboxComplete(event, newLi, text_area)
   );
+
+  saveNoteToStorage(newLi);
 }
 
 function createNewLi() {
@@ -87,6 +91,7 @@ function verifyCheckboxComplete(event, newLi, text_area) {
       task_state[taskID] = {
         priority: newLi.classList[0],
         text: text_area.value,
+        completed: true
       };
       newLi.classList.remove("low-priority", "middle-priority", "high-priority");
       newLi.classList.add("completed");
@@ -100,8 +105,86 @@ function verifyCheckboxComplete(event, newLi, text_area) {
         text_area.disabled = false;
       }
     }
+    saveNoteToStorage(newLi);
   } else {
     console.log("O evento não foi disparado por um checkbox");
+  }
+}
+
+function saveNoteToStorage(newLi) {
+  const taskID = newLi.dataset.id || Date.now();
+  newLi.dataset.id = taskID;
+  
+  const task = {
+    id: taskID,
+    priority: newLi.classList[0],
+    text: newLi.querySelector("textarea").value,
+    completed: newLi.classList.contains("completed")
+  };
+
+  task_state[taskID] = task;
+  localStorage.setItem("task_state", JSON.stringify(task_state));
+}
+
+function deleteNoteFromStorage(taskID) {
+  delete task_state[taskID];
+  localStorage.setItem("task_state", JSON.stringify(task_state));
+}
+
+function loadNotes() {
+  const savedTasks = JSON.parse(localStorage.getItem("task_state"));
+
+  if (savedTasks) {
+    Object.values(savedTasks).forEach(task => {
+      const newLi = createNewLi();
+      newLi.dataset.id = task.id;
+      newLi.classList.add(task.priority);
+
+      const checkbox = newLi.querySelector('input[type="checkbox"]');
+      const text_area = newLi.querySelector("textarea");
+      text_area.value = task.text;
+
+      if (task.completed) {
+        newLi.classList.add("completed");
+        text_area.disabled = true;
+        checkbox.disabled = true;
+      }
+
+      const btn_save = newLi.querySelector(".btn-save");
+      const btn_edit = newLi.querySelector(".btn-edit");
+      const btn_delete = newLi.querySelector(".btn-delete");
+
+      btn_save.addEventListener("click", () => {
+        text_area.disabled = true;
+        btn_save.classList.remove("display-block");
+        btn_save.classList.add("display-none");
+        btn_edit.classList.add("display-block");
+        btn_delete.classList.add("display-block");
+        saveNoteToStorage(newLi);
+        console.log("btn_save clicado");
+      });
+
+      btn_edit.addEventListener("click", () => {
+        text_area.disabled = false;
+        text_area.focus();
+        text_area.select();
+        btn_save.classList.remove("display-none");
+        btn_save.classList.add("display-block");
+        btn_edit.classList.remove("display-block");
+        btn_edit.classList.add("display-none");
+        console.log("btn_edit clicado");
+      });
+
+      btn_delete.addEventListener("click", () => {
+        newLi.remove();
+        deleteNoteFromStorage(newLi.dataset.id);
+        console.log("btn_delete clicado");
+      });
+
+      checkbox.addEventListener("change", (event) =>
+        verifyCheckboxComplete(event, newLi, text_area)
+      );
+    });
   }
 }
 
