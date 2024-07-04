@@ -104,7 +104,8 @@ textarea {
 }
 
 .btn-save,
-.btn-delete{
+.btn-delete, 
+.btn-edit{
     margin-right: 10px;
 }
 
@@ -127,9 +128,11 @@ textarea {
     display: none;
 }
 
-.btn-edit,
-.btn-save{
-    /* display: none; */
+.display-none{
+    display: none;
+}
+.display-block{
+    display: block;
 }
 
 /*Estilos btn*/
